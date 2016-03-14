@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerStoredProcExtraction.Cmd", "SqlServerStoredProcExtraction.Cmd\SqlServerStoredProcExtraction.Cmd.csproj", "{0436DF3C-85AC-441A-8F39-DF0585A50942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerStoredProcExtraction.Test", "SqlServerStoredProcExtraction.Test\SqlServerStoredProcExtraction.Test.csproj", "{883E612B-5260-4B7E-8273-A2CBCE901FB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kc.DbFactory", "..\kc.dbfactory\Kc.DbFactory\Kc.DbFactory.csproj", "{D75F0D6F-1BC8-4F33-8D61-1449ADCBB4E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0436DF3C-85AC-441A-8F39-DF0585A50942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0436DF3C-85AC-441A-8F39-DF0585A50942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0436DF3C-85AC-441A-8F39-DF0585A50942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0436DF3C-85AC-441A-8F39-DF0585A50942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{883E612B-5260-4B7E-8273-A2CBCE901FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883E612B-5260-4B7E-8273-A2CBCE901FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883E612B-5260-4B7E-8273-A2CBCE901FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883E612B-5260-4B7E-8273-A2CBCE901FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D75F0D6F-1BC8-4F33-8D61-1449ADCBB4E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D75F0D6F-1BC8-4F33-8D61-1449ADCBB4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D75F0D6F-1BC8-4F33-8D61-1449ADCBB4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D75F0D6F-1BC8-4F33-8D61-1449ADCBB4E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

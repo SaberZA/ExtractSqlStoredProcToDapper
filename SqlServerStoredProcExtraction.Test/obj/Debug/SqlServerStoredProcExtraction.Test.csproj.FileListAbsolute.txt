@@ -1,0 +1,12 @@
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\obj\Debug\SqlServerStoredProcExtraction.Test.csprojResolveAssemblyReference.cache
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\SqlServerStoredProcExtraction.Test.dll
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\SqlServerStoredProcExtraction.Test.pdb
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\Kc.DbFactory.dll
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\nunit.framework.dll
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\Dapper.dll
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\Kc.DbFactory.pdb
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\nunit.framework.xml
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\Dapper.pdb
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\bin\Debug\Dapper.xml
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\obj\Debug\SqlServerStoredProcExtraction.Test.dll
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Test\obj\Debug\SqlServerStoredProcExtraction.Test.pdb

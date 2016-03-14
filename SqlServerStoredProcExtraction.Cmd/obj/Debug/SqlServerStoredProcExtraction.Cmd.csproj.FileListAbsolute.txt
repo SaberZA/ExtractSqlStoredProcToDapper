@@ -1,0 +1,5 @@
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Cmd\bin\Debug\SqlServerStoredProcExtraction.Cmd.exe.config
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Cmd\bin\Debug\SqlServerStoredProcExtraction.Cmd.exe
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Cmd\bin\Debug\SqlServerStoredProcExtraction.Cmd.pdb
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Cmd\obj\Debug\SqlServerStoredProcExtraction.Cmd.exe
+C:\Dev\SqlServerStoredProcExtraction\SqlServerStoredProcExtraction.Cmd\obj\Debug\SqlServerStoredProcExtraction.Cmd.pdb
