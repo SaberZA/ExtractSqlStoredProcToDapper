@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kc.DbFactory;
 using NUnit.Framework;
 
 namespace SqlServerStoredProcExtraction.Test
@@ -9,82 +10,74 @@ namespace SqlServerStoredProcExtraction.Test
     {
         public string ObjectType { get; set; }
         public string ObjectName { get; set; }
+        public List<SqlSpParameter> Parameters { get; set; }
+        public string ObjectCore { get; set; }
+
         public string ObjectDefintion { get; set; }
 
-        public List<SqlSpParameter> Parameters
+        public void BootstrapStoredProc()
         {
-            get
+            //Parameters = CreateParametersFromDefinition();
+            ObjectCore = CreateObjectCore();
+        }
+        
+        private string CreateObjectCore()
+        {
+            var endIndexOfParameterBlock = ObjectDefintion.IndexOf("BEGIN", System.StringComparison.InvariantCultureIgnoreCase);
+            if (endIndexOfParameterBlock == -1)
             {
-                var startIndex = ObjectDefintion.IndexOf("CREATE", System.StringComparison.InvariantCultureIgnoreCase);
-                var endIndexOfParameterBlock = ObjectDefintion.IndexOf("BEGIN", System.StringComparison.InvariantCultureIgnoreCase);
-                if (endIndexOfParameterBlock == -1)
-                {
-                    endIndexOfParameterBlock = ObjectDefintion.IndexOf("AS", System.StringComparison.InvariantCultureIgnoreCase);
-                }
-                var parameterBlock = ObjectDefintion.Substring(startIndex, endIndexOfParameterBlock - startIndex);
-                var firstParamIndex = parameterBlock.IndexOf("@", StringComparison.InvariantCultureIgnoreCase);
-
-                if (firstParamIndex == -1)
-                {
-                    return new List<SqlSpParameter>();
-                }
-
-                var lastIndexOfAsStatement = parameterBlock.LastIndexOf("AS",
-                    StringComparison.InvariantCultureIgnoreCase);
-
-                if (lastIndexOfAsStatement == -1)
-                {
-                    lastIndexOfAsStatement = parameterBlock.Length - 1;
-                }
-
-
-                var eachParamBlock = parameterBlock.Substring(firstParamIndex, lastIndexOfAsStatement - firstParamIndex);
-
-
-                var parameters = eachParamBlock.Split(new string[] { ",", "\r\n"}, StringSplitOptions.RemoveEmptyEntries).ToList();
-
-                var filteredParams = new List<string>();
-                foreach (var parameter in parameters)
-                {
-                    var trim = parameter.Trim();
-                    if (trim.Contains("--"))
-                    {
-                        var commentIndex = trim.IndexOf("--", StringComparison.InvariantCultureIgnoreCase);
-                        var trimmedOffComment = trim.Substring(0, commentIndex);
-                        trim = trimmedOffComment;
-                    }
-
-                    if (trim.Length < 5)
-                    {
-                        continue;
-                    }
-
-                    if (!trim.Contains("@"))
-                    {
-                        continue;
-                    }
-
-
-                    filteredParams.Add(trim);
-                }
-
-                var sqlSpParameters = new List<SqlSpParameter>();
-
-                foreach (var parameter in filteredParams)
-                {
-                    var paramAndType = parameter.Split(new string[] {" ", "\t"}, StringSplitOptions.RemoveEmptyEntries).ToList();
-                    var sqlSpParameter = new SqlSpParameter() {ParameterName = paramAndType[0], ParameterType = paramAndType[1]};
-                    sqlSpParameters.Add(sqlSpParameter);
-                }
-                
-                return sqlSpParameters;
+                endIndexOfParameterBlock = ObjectDefintion.IndexOf("AS", System.StringComparison.InvariantCultureIgnoreCase);
             }
+
+
+            var objectCore = ObjectDefintion.Substring(endIndexOfParameterBlock,
+                ObjectDefintion.Length - endIndexOfParameterBlock);
+
+            var beginWord = "begin";
+            if (objectCore.ToLower().StartsWith(beginWord))
+            {
+                objectCore = objectCore.Substring(beginWord.Length, objectCore.Length - beginWord.Length);
+            }
+
+            var endWord = "end";
+            if (objectCore.ToLower().EndsWith(endWord))
+            {
+                objectCore = objectCore.Substring(0, objectCore.Length - endWord.Length);
+            }
+            return objectCore;
+        }
+    }
+
+    public class SelectStoredProcParametersStatement : ISqlStatement
+    {
+        public string StoredProcedureName { get; set; }
+
+        public SelectStoredProcParametersStatement(string storedProcedureName)
+        {
+            StoredProcedureName = storedProcedureName;
+        }
+        
+        public string GetSqlStatement()
+        {
+            return @"select * from information_schema.parameters
+            where specific_name = @StoredProcedureName";
         }
     }
 
     public class SqlSpParameter
     {
-        public string ParameterName { get; set; }
-        public string ParameterType { get; set; }
+        public string Parameter_Name { get; set; }
+        public string Data_Type { get; set; }
+        public string Parameter_Mode { get; set; }
+
+        public Type ParameterClrType
+        {
+            get { return SqlServerDataTypeHelper.GetClrType(Data_Type); }
+        }
+
+        public string ParameterPropertyName
+        {
+            get { return Parameter_Name.Replace("@", ""); }
+        }
     }
 }
